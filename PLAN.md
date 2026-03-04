@@ -61,10 +61,10 @@ Start with basic recipes:
 
 ## Roadmap
 
-- [ ] Create basic module structure
-- [ ] Implement grid rendering (HTML table with links)
-- [ ] Add 4 starter recipes
-- [ ] Add item sprites
+- [x] Create basic module structure
+- [x] Implement grid rendering (HTML table with links)
+- [x] Add 5 starter recipes (log, planks, sticks, pickaxe, crafting table, chest)
+- [ ] Add item sprites (currently using emojis)
 - [ ] Deploy and test
 - [ ] Integrate into martinbaud profile
 

@@ -9,6 +9,8 @@ export { FollowersDynamicModule } from "./dynamics/followers.module"
 export { GeneratedDynamicModule } from "./dynamics/generated.module"
 export { WordleDynamicModule } from "./dynamics/wordle.module"
 export { ChessDynamicModule } from "./dynamics/chess.module"
+export { MinesweeperDynamicModule } from "./dynamics/minesweeper.module"
+export { MinecraftCraftingDynamicModule } from "./dynamics/minecraft-crafting.module"
 
 export { ElementStaticModule } from "./statics/element.module"
 export { GreetingStaticModule } from "./statics/greeting.module"

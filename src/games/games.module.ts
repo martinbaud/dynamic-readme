@@ -13,6 +13,8 @@ import { AuthModule } from 'src/auth/auth.module';
 
 import { GbaService } from './gba/gba.service';
 import { GbaController } from './gba/gba.controller';
+import { MinecraftService } from './minecraft/minecraft.service';
+import { MinecraftController } from './minecraft/minecraft.controller';
 import { AppConfigService } from 'src/services';
 
 @Module({
@@ -25,7 +27,8 @@ import { AppConfigService } from 'src/services';
     ChessController,
     WordleController,
     // GameboyController,
-    GbaController
+    GbaController,
+    MinecraftController
   ],
   providers: [
     MinesweeperService,
@@ -34,6 +37,7 @@ import { AppConfigService } from 'src/services';
     // GameboyService,
     // GameboyGateway,
     GbaService,
+    MinecraftService,
     AppConfigService,
   ],
   exports: [
@@ -41,7 +45,8 @@ import { AppConfigService } from 'src/services';
     ChessService,
     WordleService,
     // GameboyService,
-    GbaService
+    GbaService,
+    MinecraftService
   ]
 })
 export class GamesModule {}
