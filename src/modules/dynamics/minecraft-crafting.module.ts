@@ -11,15 +11,15 @@ interface Options {
   maxInventoryDisplay?: number;
 }
 
-// Item emoji mapping
-const ITEM_EMOJI: Record<string, string> = {
-  'oak_log': '🪵',
-  'oak_planks': '🟫',
-  'stick': '🥢',
-  'wooden_pickaxe': '⛏️',
-  'crafting_table': '🔨',
-  'chest': '📦',
-  'empty': '⬜'
+// Item sprite paths (served from /public/minecraft/items/)
+const ITEM_SPRITES: Record<string, string> = {
+  'oak_log': 'oak_log.svg',
+  'oak_planks': 'oak_planks.svg',
+  'stick': 'stick.svg',
+  'wooden_pickaxe': 'wooden_pickaxe.svg',
+  'crafting_table': 'crafting_table.svg',
+  'chest': 'chest.svg',
+  'empty': 'empty.svg'
 };
 
 export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, Options> {
@@ -82,9 +82,10 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
     await this.saveCrafting(crafting);
   }
 
-  private getEmoji(item: string | null): string {
-    if (!item) return ITEM_EMOJI['empty'];
-    return ITEM_EMOJI[item] || '❓';
+  private getItemImg(item: string | null, size: number = 32): string {
+    const { APP_BASE_URL } = AppConfigService;
+    const sprite = item ? (ITEM_SPRITES[item] || 'empty.svg') : ITEM_SPRITES['empty'];
+    return `<img src="${APP_BASE_URL}/minecraft/items/${sprite}" width="${size}" height="${size}" alt="${item || 'empty'}"/>`;
   }
 
   public async render(): Promise<string> {
@@ -107,17 +108,17 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
       for (let col = 0; col < 3; col++) {
         const slot = row * 3 + col;
         const item = grid[slot];
-        const emoji = this.getEmoji(item);
+        const img = this.getItemImg(item);
 
         if (item) {
           // Slot has item - click to remove
           str += `<td align="center" width="48" height="48" bgcolor="#8B5A2B">`;
-          str += `<a href="${BASE_URL}/remove?slot=${slot}">${emoji}</a>`;
+          str += `<a href="${BASE_URL}/remove?slot=${slot}">${img}</a>`;
           str += `</td>\n`;
         } else {
-          // Empty slot - show available items to place
+          // Empty slot
           str += `<td align="center" width="48" height="48" bgcolor="#3d3d3d">`;
-          str += `${emoji}`;
+          str += `${img}`;
           str += `</td>\n`;
         }
       }
@@ -130,12 +131,12 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
 
     // Result slot
     if (result) {
-      str += `<td align="center" width="48" height="48" bgcolor="#C4A060">`;
-      str += `<a href="${BASE_URL}/craft"><b>x${resultCount}</b><br>${this.getEmoji(result)}</a>`;
+      str += `<td align="center" width="64" height="48" bgcolor="#C4A060">`;
+      str += `<a href="${BASE_URL}/craft">${this.getItemImg(result)}<br><b>x${resultCount}</b></a>`;
       str += `</td>\n`;
     } else {
-      str += `<td align="center" width="48" height="48" bgcolor="#555555">`;
-      str += `<b>?</b>`;
+      str += `<td align="center" width="64" height="48" bgcolor="#555555">`;
+      str += `${this.getItemImg(null)}`;
       str += `</td>\n`;
     }
 
@@ -157,9 +158,9 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
           // Click to place in first empty slot
           const emptySlot = grid.findIndex(s => s === null);
           if (emptySlot !== -1) {
-            str += `<a href="${BASE_URL}/place?slot=${emptySlot}&item=${item}">${this.getEmoji(item)}</a> `;
+            str += `<a href="${BASE_URL}/place?slot=${emptySlot}&item=${item}">${this.getItemImg(item, 24)}</a> `;
           } else {
-            str += `${this.getEmoji(item)} `;
+            str += `${this.getItemImg(item, 24)} `;
           }
         }
         if (remaining > 0) {
