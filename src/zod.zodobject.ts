@@ -149,6 +149,7 @@ export const ConfigSchema = z.object({
         options: z.object({
           showInventory: z.boolean().optional(),
           maxInventoryDisplay: z.number().optional(),
+          headerIcon: z.string().optional(),
         }).optional(),
         disabled: z.boolean().optional(),
       }),
