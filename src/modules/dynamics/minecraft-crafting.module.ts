@@ -111,8 +111,12 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
   private getItemImg(item: string | null, size: number = 32): string {
     if (!item) return '';
     const sprite = ITEM_SPRITES[item];
-    if (!sprite) return `<span title="${item}">❓</span>`;
-    return `<img src="${sprite}" width="${size}" height="${size}" alt="${item}" title="${item.replace(/_/g, ' ')}"/>`;
+    if (!sprite) {
+      // Fallback: text label
+      const label = item.replace(/_/g, ' ').substring(0, 3);
+      return `<code title="${item}">${label}</code>`;
+    }
+    return `<img src="${sprite}" width="${size}" height="${size}" alt="${item}" title="${item.replace(/_/g, ' ')}">`;
   }
 
   public async render(): Promise<string> {
