@@ -4,11 +4,13 @@ import { AppConfig } from "../declaration";
 import State from "../State";
 import { Response } from "express";
 import { Logger } from "@nestjs/common";
+import { Mutex } from "async-mutex";
 
 class ReadmeService {
 	currentContentSha: string | null = null;
 	startDateRender: number;
 	private logger = new Logger("ReadmeService")
+	private mutex = new Mutex();
 
 	async push(octokit: Octokit, message: string, content: string, sha: string): Promise<string> {
 		const config = AppConfigService.getOrThrow<AppConfig>('config')
@@ -30,12 +32,18 @@ class ReadmeService {
 	}
 
 	async renderCommitAndPush(commitMessage: string) {
-		const readmeContent = await State.render()
+		// Acquire mutex to prevent race conditions with concurrent requests
+		const release = await this.mutex.acquire();
+		try {
+			const readmeContent = await State.render()
 
-		if(AppConfigService.getOrThrow('NODE_ENV') === "production") {
-			await this.commitAndPush(commitMessage, readmeContent)
-		} else {
-			this.logger.debug(`Commiting: ${commitMessage}`)
+			if(AppConfigService.getOrThrow('NODE_ENV') === "production") {
+				await this.commitAndPush(commitMessage, readmeContent)
+			} else {
+				this.logger.debug(`Commiting: ${commitMessage}`)
+			}
+		} finally {
+			release();
 		}
 	}
 
