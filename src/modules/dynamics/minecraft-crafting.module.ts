@@ -11,16 +11,42 @@ interface Options {
   maxInventoryDisplay?: number;
 }
 
-// Item sprite paths (served from /public/minecraft/items/)
+// Minecraft Wiki sprite URLs (32x32 PNG)
+const WIKI_BASE = 'https://minecraft.wiki/images';
 const ITEM_SPRITES: Record<string, string> = {
-  'oak_log': 'oak_log.svg',
-  'oak_planks': 'oak_planks.svg',
-  'stick': 'stick.svg',
-  'wooden_pickaxe': 'wooden_pickaxe.svg',
-  'crafting_table': 'crafting_table.svg',
-  'chest': 'chest.svg',
-  'empty': 'empty.svg'
+  // Basic
+  'oak_log': `${WIKI_BASE}/Invicon_Oak_Log.png`,
+  'oak_planks': `${WIKI_BASE}/Invicon_Oak_Planks.png`,
+  'stick': `${WIKI_BASE}/Invicon_Stick.png`,
+  'crafting_table': `${WIKI_BASE}/Invicon_Crafting_Table.png`,
+  'chest': `${WIKI_BASE}/Invicon_Chest.png`,
+  'furnace': `${WIKI_BASE}/Invicon_Furnace.png`,
+  'torch': `${WIKI_BASE}/Invicon_Torch.png`,
+  'ladder': `${WIKI_BASE}/Invicon_Ladder.png`,
+  'cobblestone': `${WIKI_BASE}/Invicon_Cobblestone.png`,
+  'coal': `${WIKI_BASE}/Invicon_Coal.png`,
+  'iron_ingot': `${WIKI_BASE}/Invicon_Iron_Ingot.png`,
+  'diamond': `${WIKI_BASE}/Invicon_Diamond.png`,
+  // Wooden tools
+  'wooden_pickaxe': `${WIKI_BASE}/Invicon_Wooden_Pickaxe.png`,
+  'wooden_axe': `${WIKI_BASE}/Invicon_Wooden_Axe.png`,
+  'wooden_sword': `${WIKI_BASE}/Invicon_Wooden_Sword.png`,
+  'wooden_shovel': `${WIKI_BASE}/Invicon_Wooden_Shovel.png`,
+  'wooden_hoe': `${WIKI_BASE}/Invicon_Wooden_Hoe.png`,
+  // Stone tools
+  'stone_pickaxe': `${WIKI_BASE}/Invicon_Stone_Pickaxe.png`,
+  'stone_axe': `${WIKI_BASE}/Invicon_Stone_Axe.png`,
+  'stone_sword': `${WIKI_BASE}/Invicon_Stone_Sword.png`,
+  'stone_shovel': `${WIKI_BASE}/Invicon_Stone_Shovel.png`,
+  'stone_hoe': `${WIKI_BASE}/Invicon_Stone_Hoe.png`,
+  // Iron tools
+  'iron_pickaxe': `${WIKI_BASE}/Invicon_Iron_Pickaxe.png`,
+  'iron_sword': `${WIKI_BASE}/Invicon_Iron_Sword.png`,
+  // Diamond tools
+  'diamond_pickaxe': `${WIKI_BASE}/Invicon_Diamond_Pickaxe.png`,
+  'diamond_sword': `${WIKI_BASE}/Invicon_Diamond_Sword.png`,
 };
+
 
 export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, Options> {
   redisKey: string;
@@ -83,9 +109,10 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
   }
 
   private getItemImg(item: string | null, size: number = 32): string {
-    const { APP_BASE_URL } = AppConfigService;
-    const sprite = item ? (ITEM_SPRITES[item] || 'empty.svg') : ITEM_SPRITES['empty'];
-    return `<img src="${APP_BASE_URL}/minecraft/items/${sprite}" width="${size}" height="${size}" alt="${item || 'empty'}"/>`;
+    if (!item) return '';
+    const sprite = ITEM_SPRITES[item];
+    if (!sprite) return `<span title="${item}">❓</span>`;
+    return `<img src="${sprite}" width="${size}" height="${size}" alt="${item}" title="${item.replace(/_/g, ' ')}"/>`;
   }
 
   public async render(): Promise<string> {
@@ -95,14 +122,21 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
     const crafting = await this.getCrafting();
     const { grid, inventory, result, resultCount } = crafting;
 
-    let str = `<h3 align="center">Minecraft Crafting</h3>\n`;
-    str += `<div align="center">\n`;
-    str += `<table>\n`;
-    str += `<tr><th colspan="5">CRAFTING</th></tr>\n`;
+    // Minecraft-style inventory background
+    const MC_BG = '#c6c6c6';
+    const MC_SLOT = '#8b8b8b';
+    const MC_SLOT_DARK = '#373737';
+    const MC_SLOT_LIGHT = '#ffffff';
+
+    let str = `<div align="center">\n`;
+
+    // Main crafting UI container with Minecraft inventory style
+    str += `<table cellpadding="8" cellspacing="0" style="background:${MC_BG};border:3px solid ${MC_SLOT_DARK};border-radius:4px;">\n`;
+    str += `<tr><td colspan="5" align="center" style="color:#404040;font-weight:bold;font-family:monospace;">⛏️ CRAFTING TABLE</td></tr>\n`;
     str += `<tr>\n`;
 
-    // Crafting grid (3x3)
-    str += `<td>\n<table>\n`;
+    // Crafting grid (3x3) with Minecraft slot styling
+    str += `<td valign="middle">\n<table cellpadding="0" cellspacing="2" style="background:${MC_BG};">\n`;
     for (let row = 0; row < 3; row++) {
       str += `<tr>\n`;
       for (let col = 0; col < 3; col++) {
@@ -110,15 +144,15 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
         const item = grid[slot];
         const img = this.getItemImg(item);
 
+        // Minecraft-style slot with 3D border effect
+        const slotStyle = `background:${MC_SLOT};border:2px solid;border-color:${MC_SLOT_DARK} ${MC_SLOT_LIGHT} ${MC_SLOT_LIGHT} ${MC_SLOT_DARK};`;
+
         if (item) {
-          // Slot has item - click to remove
-          str += `<td align="center" width="48" height="48" bgcolor="#8B5A2B">`;
+          str += `<td align="center" width="40" height="40" style="${slotStyle}">`;
           str += `<a href="${BASE_URL}/remove?slot=${slot}">${img}</a>`;
           str += `</td>\n`;
         } else {
-          // Empty slot
-          str += `<td align="center" width="48" height="48" bgcolor="#3d3d3d">`;
-          str += `${img}`;
+          str += `<td align="center" width="40" height="40" style="${slotStyle}">`;
           str += `</td>\n`;
         }
       }
@@ -126,54 +160,67 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
     }
     str += `</table>\n</td>\n`;
 
-    // Arrow
-    str += `<td align="center" width="40">→</td>\n`;
+    // Arrow with Minecraft style
+    str += `<td align="center" width="50" style="font-size:24px;color:#404040;">➡️</td>\n`;
 
-    // Result slot
+    // Result slot (larger, golden border for craftable item)
+    const resultSlotStyle = result
+      ? `background:#8b8b8b;border:3px solid;border-color:${MC_SLOT_DARK} #d4af37 #d4af37 ${MC_SLOT_DARK};`
+      : `background:${MC_SLOT};border:2px solid;border-color:${MC_SLOT_DARK} ${MC_SLOT_LIGHT} ${MC_SLOT_LIGHT} ${MC_SLOT_DARK};`;
+
+    str += `<td align="center" width="48" height="48" style="${resultSlotStyle}">`;
     if (result) {
-      str += `<td align="center" width="64" height="48" bgcolor="#C4A060">`;
-      str += `<a href="${BASE_URL}/craft">${this.getItemImg(result)}<br><b>x${resultCount}</b></a>`;
-      str += `</td>\n`;
-    } else {
-      str += `<td align="center" width="64" height="48" bgcolor="#555555">`;
-      str += `${this.getItemImg(null)}`;
-      str += `</td>\n`;
+      str += `<a href="${BASE_URL}/craft">${this.getItemImg(result)}</a>`;
+      if (resultCount > 1) {
+        str += `<br><span style="color:#404040;font-size:12px;font-weight:bold;">x${resultCount}</span>`;
+      }
     }
+    str += `</td>\n`;
 
     str += `</tr>\n`;
     str += `</table>\n`;
     str += `</div>\n\n`;
 
-    // Inventory
+    // Inventory section with Minecraft style
     if (this.options?.showInventory !== false) {
       const maxDisplay = this.options?.maxInventoryDisplay || 8;
       const displayItems = inventory.slice(0, maxDisplay);
       const remaining = inventory.length - maxDisplay;
 
-      str += `<p align="center"><b>Inventory:</b> `;
+      str += `<div align="center">\n`;
+      str += `<table cellpadding="4" cellspacing="0" style="background:${MC_BG};border:2px solid ${MC_SLOT_DARK};border-radius:4px;margin-top:8px;">\n`;
+      str += `<tr><td colspan="${Math.min(displayItems.length, 8) || 1}" align="center" style="color:#404040;font-size:12px;font-family:monospace;">📦 INVENTORY</td></tr>\n`;
+      str += `<tr>\n`;
+
       if (displayItems.length === 0) {
-        str += `<i>empty</i>`;
+        str += `<td style="color:#606060;font-style:italic;padding:8px;">empty</td>`;
       } else {
         for (const item of displayItems) {
-          // Click to place in first empty slot
           const emptySlot = grid.findIndex(s => s === null);
+          const slotStyle = `background:${MC_SLOT};border:2px solid;border-color:${MC_SLOT_DARK} ${MC_SLOT_LIGHT} ${MC_SLOT_LIGHT} ${MC_SLOT_DARK};`;
+
+          str += `<td align="center" width="36" height="36" style="${slotStyle}">`;
           if (emptySlot !== -1) {
-            str += `<a href="${BASE_URL}/place?slot=${emptySlot}&item=${item}">${this.getItemImg(item, 24)}</a> `;
+            str += `<a href="${BASE_URL}/place?slot=${emptySlot}&item=${item}">${this.getItemImg(item, 24)}</a>`;
           } else {
-            str += `${this.getItemImg(item, 24)} `;
+            str += `${this.getItemImg(item, 24)}`;
           }
+          str += `</td>\n`;
         }
         if (remaining > 0) {
-          str += `<i>+${remaining} more</i>`;
+          str += `<td style="color:#606060;font-size:11px;padding:4px;">+${remaining}</td>`;
         }
       }
-      str += `</p>\n`;
+      str += `</tr>\n`;
+      str += `</table>\n`;
+      str += `</div>\n\n`;
     }
 
-    // Controls
-    str += `<p align="center">`;
-    str += `<a href="${BASE_URL}/clear">Clear</a> · `;
-    str += `<a href="${BASE_URL}/reset">Reset</a>`;
+    // Controls with Minecraft button style
+    str += `<p align="center" style="margin-top:8px;">`;
+    str += `<a href="${BASE_URL}/clear" style="color:#404040;">🗑️ Clear</a>`;
+    str += ` · `;
+    str += `<a href="${BASE_URL}/reset" style="color:#404040;">🔄 Reset</a>`;
     str += `</p>\n`;
 
     str += `<hr>\n\n`;

@@ -21,6 +21,7 @@ export interface ShapelessRecipe {
  * Pattern uses 3x3 grid, null = empty
  */
 export const RECIPES: Recipe[] = [
+  // === BASIC ===
   // Oak Log -> Oak Planks (1x1)
   {
     pattern: [
@@ -41,16 +42,6 @@ export const RECIPES: Recipe[] = [
     result: 'stick',
     count: 4
   },
-  // Wooden Pickaxe
-  {
-    pattern: [
-      ['oak_planks', 'oak_planks', 'oak_planks'],
-      [null, 'stick', null],
-      [null, 'stick', null]
-    ],
-    result: 'wooden_pickaxe',
-    count: 1
-  },
   // Crafting Table
   {
     pattern: [
@@ -70,7 +61,181 @@ export const RECIPES: Recipe[] = [
     ],
     result: 'chest',
     count: 1
-  }
+  },
+  // Furnace
+  {
+    pattern: [
+      ['cobblestone', 'cobblestone', 'cobblestone'],
+      ['cobblestone', null, 'cobblestone'],
+      ['cobblestone', 'cobblestone', 'cobblestone']
+    ],
+    result: 'furnace',
+    count: 1
+  },
+  // Torch
+  {
+    pattern: [
+      ['coal', null, null],
+      ['stick', null, null],
+      [null, null, null]
+    ],
+    result: 'torch',
+    count: 4
+  },
+  // Ladder
+  {
+    pattern: [
+      ['stick', null, 'stick'],
+      ['stick', 'stick', 'stick'],
+      ['stick', null, 'stick']
+    ],
+    result: 'ladder',
+    count: 3
+  },
+  // === WOODEN TOOLS ===
+  // Wooden Pickaxe
+  {
+    pattern: [
+      ['oak_planks', 'oak_planks', 'oak_planks'],
+      [null, 'stick', null],
+      [null, 'stick', null]
+    ],
+    result: 'wooden_pickaxe',
+    count: 1
+  },
+  // Wooden Axe
+  {
+    pattern: [
+      ['oak_planks', 'oak_planks', null],
+      ['oak_planks', 'stick', null],
+      [null, 'stick', null]
+    ],
+    result: 'wooden_axe',
+    count: 1
+  },
+  // Wooden Sword
+  {
+    pattern: [
+      ['oak_planks', null, null],
+      ['oak_planks', null, null],
+      ['stick', null, null]
+    ],
+    result: 'wooden_sword',
+    count: 1
+  },
+  // Wooden Shovel
+  {
+    pattern: [
+      ['oak_planks', null, null],
+      ['stick', null, null],
+      ['stick', null, null]
+    ],
+    result: 'wooden_shovel',
+    count: 1
+  },
+  // Wooden Hoe
+  {
+    pattern: [
+      ['oak_planks', 'oak_planks', null],
+      [null, 'stick', null],
+      [null, 'stick', null]
+    ],
+    result: 'wooden_hoe',
+    count: 1
+  },
+  // === STONE TOOLS ===
+  // Stone Pickaxe
+  {
+    pattern: [
+      ['cobblestone', 'cobblestone', 'cobblestone'],
+      [null, 'stick', null],
+      [null, 'stick', null]
+    ],
+    result: 'stone_pickaxe',
+    count: 1
+  },
+  // Stone Axe
+  {
+    pattern: [
+      ['cobblestone', 'cobblestone', null],
+      ['cobblestone', 'stick', null],
+      [null, 'stick', null]
+    ],
+    result: 'stone_axe',
+    count: 1
+  },
+  // Stone Sword
+  {
+    pattern: [
+      ['cobblestone', null, null],
+      ['cobblestone', null, null],
+      ['stick', null, null]
+    ],
+    result: 'stone_sword',
+    count: 1
+  },
+  // Stone Shovel
+  {
+    pattern: [
+      ['cobblestone', null, null],
+      ['stick', null, null],
+      ['stick', null, null]
+    ],
+    result: 'stone_shovel',
+    count: 1
+  },
+  // Stone Hoe
+  {
+    pattern: [
+      ['cobblestone', 'cobblestone', null],
+      [null, 'stick', null],
+      [null, 'stick', null]
+    ],
+    result: 'stone_hoe',
+    count: 1
+  },
+  // === IRON TOOLS ===
+  // Iron Pickaxe
+  {
+    pattern: [
+      ['iron_ingot', 'iron_ingot', 'iron_ingot'],
+      [null, 'stick', null],
+      [null, 'stick', null]
+    ],
+    result: 'iron_pickaxe',
+    count: 1
+  },
+  // Iron Sword
+  {
+    pattern: [
+      ['iron_ingot', null, null],
+      ['iron_ingot', null, null],
+      ['stick', null, null]
+    ],
+    result: 'iron_sword',
+    count: 1
+  },
+  // === DIAMOND TOOLS ===
+  // Diamond Pickaxe
+  {
+    pattern: [
+      ['diamond', 'diamond', 'diamond'],
+      [null, 'stick', null],
+      [null, 'stick', null]
+    ],
+    result: 'diamond_pickaxe',
+    count: 1
+  },
+  // Diamond Sword
+  {
+    pattern: [
+      ['diamond', null, null],
+      ['diamond', null, null],
+      ['stick', null, null]
+    ],
+    result: 'diamond_sword',
+    count: 1
+  },
 ];
 
 /**
