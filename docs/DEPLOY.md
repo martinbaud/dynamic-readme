@@ -1,78 +1,32 @@
-# Deployment Guide
+# Railway deploy
 
-## Prerequisites
-
-- Railway account (or similar PaaS)
-- Redis instance
-- GitHub Personal Access Token with `repo` scope
-
-## Environment Variables
+## Env vars
 
 ```bash
-# GitHub
-GH_TOKEN=ghp_xxxxxxxxxxxx          # PAT with repo scope
-OCTO_COMMITTER_NAME=martinbaud
-OCTO_COMMITTER_EMAIL=martinbaud.git@gmail.com
-
-# App
+GH_TOKEN=<github_pat>
+OCTO_COMMITTER_NAME=<github_username>
+OCTO_COMMITTER_EMAIL=<email>
+REDIS_URL=<railway_redis_url>
+JWT_SECRET=<random>
 APP_PROTOCOL=https
-APP_DOMAIN=railway.app              # or custom domain
+APP_DOMAIN=railway.app
 APP_SUB_DOMAIN=dynamic-readme
 APP_PORT=3000
-
-# Redis
-REDIS_URL=redis://default:xxx@xxx.railway.app:6379
-
-# JWT (generate random)
-JWT_SECRET=xxxxxxxxxxxxxxxx
 ```
 
-## Railway Setup
+## Setup
 
-1. Create new project
-2. Add Redis service
-3. Add Node.js service from GitHub repo
-4. Set environment variables
-5. Deploy
+Create Railway project, add Redis, deploy from repo, set env vars above.
 
-## Config
+Config: copy `config.martinbaud.json` → `config.json`
 
-Copy `config.martinbaud.json` to `config.json` and adjust.
-
-## Sprites
-
-### Option 1: Emojis (current)
-No setup needed. Uses Unicode emojis.
-
-### Option 2: Vanilla-style sprites
-Download 16x16 textures to `src/assets/minecraft/`:
-
-```
-oak_log.png
-oak_planks.png
-stick.png
-wooden_pickaxe.png
-crafting_table.png
-chest.png
-empty.png
-```
-
-Sources (check licenses):
-- [Faithful Pack](https://faithfulpack.net/) - CC BY-NC-SA
-- Custom pixel art (recommended)
-
-### Option 3: Generate SVG
-Create simple SVG icons matching the emoji style.
-
-## Testing
+## Local
 
 ```bash
 npm run dev
-# Visit http://localhost:3000/minecraft/martinbaud-craft/reset
+# http://localhost:3000/minecraft/martinbaud-craft/reset
 ```
 
-## Post-deploy
+## Sprites
 
-1. Update profile README to point to deployed service
-2. Test crafting flow
-3. Monitor Redis memory usage
+Emojis work out of the box. Custom 16x16 PNGs go in `src/assets/minecraft/` if needed.
