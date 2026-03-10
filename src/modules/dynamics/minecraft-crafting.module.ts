@@ -14,19 +14,29 @@ interface Options {
 // Minecraft Wiki sprite URLs (32x32 PNG)
 const WIKI_BASE = 'https://minecraft.wiki/images';
 const ITEM_SPRITES: Record<string, string> = {
-  // Basic
+  // Basic resources
   'oak_log': `${WIKI_BASE}/Invicon_Oak_Log.png`,
   'oak_planks': `${WIKI_BASE}/Invicon_Oak_Planks.png`,
   'stick': `${WIKI_BASE}/Invicon_Stick.png`,
+  'cobblestone': `${WIKI_BASE}/Invicon_Cobblestone.png`,
+  'coal': `${WIKI_BASE}/Invicon_Coal.png`,
+  'iron_ingot': `${WIKI_BASE}/Invicon_Iron_Ingot.png`,
+  'gold_ingot': `${WIKI_BASE}/Invicon_Gold_Ingot.png`,
+  'diamond': `${WIKI_BASE}/Invicon_Diamond.png`,
+  'redstone': `${WIKI_BASE}/Invicon_Redstone_Dust.png`,
+  'string': `${WIKI_BASE}/Invicon_String.png`,
+  'feather': `${WIKI_BASE}/Invicon_Feather.png`,
+  'flint': `${WIKI_BASE}/Invicon_Flint.png`,
+  'leather': `${WIKI_BASE}/Invicon_Leather.png`,
+  'paper': `${WIKI_BASE}/Invicon_Paper.png`,
+  'wool': `${WIKI_BASE}/Invicon_White_Wool.png`,
+  'sugar_cane': `${WIKI_BASE}/Invicon_Sugar_Cane.png`,
+  // Basic crafted
   'crafting_table': `${WIKI_BASE}/Invicon_Crafting_Table.png`,
   'chest': `${WIKI_BASE}/Invicon_Chest.png`,
   'furnace': `${WIKI_BASE}/Invicon_Furnace.png`,
   'torch': `${WIKI_BASE}/Invicon_Torch.png`,
   'ladder': `${WIKI_BASE}/Invicon_Ladder.png`,
-  'cobblestone': `${WIKI_BASE}/Invicon_Cobblestone.png`,
-  'coal': `${WIKI_BASE}/Invicon_Coal.png`,
-  'iron_ingot': `${WIKI_BASE}/Invicon_Iron_Ingot.png`,
-  'diamond': `${WIKI_BASE}/Invicon_Diamond.png`,
   // Wooden tools
   'wooden_pickaxe': `${WIKI_BASE}/Invicon_Wooden_Pickaxe.png`,
   'wooden_axe': `${WIKI_BASE}/Invicon_Wooden_Axe.png`,
@@ -41,10 +51,39 @@ const ITEM_SPRITES: Record<string, string> = {
   'stone_hoe': `${WIKI_BASE}/Invicon_Stone_Hoe.png`,
   // Iron tools
   'iron_pickaxe': `${WIKI_BASE}/Invicon_Iron_Pickaxe.png`,
+  'iron_axe': `${WIKI_BASE}/Invicon_Iron_Axe.png`,
   'iron_sword': `${WIKI_BASE}/Invicon_Iron_Sword.png`,
+  'iron_shovel': `${WIKI_BASE}/Invicon_Iron_Shovel.png`,
+  'iron_hoe': `${WIKI_BASE}/Invicon_Iron_Hoe.png`,
   // Diamond tools
   'diamond_pickaxe': `${WIKI_BASE}/Invicon_Diamond_Pickaxe.png`,
+  'diamond_axe': `${WIKI_BASE}/Invicon_Diamond_Axe.png`,
   'diamond_sword': `${WIKI_BASE}/Invicon_Diamond_Sword.png`,
+  'diamond_shovel': `${WIKI_BASE}/Invicon_Diamond_Shovel.png`,
+  'diamond_hoe': `${WIKI_BASE}/Invicon_Diamond_Hoe.png`,
+  // Iron armor
+  'iron_helmet': `${WIKI_BASE}/Invicon_Iron_Helmet.png`,
+  'iron_chestplate': `${WIKI_BASE}/Invicon_Iron_Chestplate.png`,
+  'iron_leggings': `${WIKI_BASE}/Invicon_Iron_Leggings.png`,
+  'iron_boots': `${WIKI_BASE}/Invicon_Iron_Boots.png`,
+  // Diamond armor
+  'diamond_helmet': `${WIKI_BASE}/Invicon_Diamond_Helmet.png`,
+  'diamond_chestplate': `${WIKI_BASE}/Invicon_Diamond_Chestplate.png`,
+  'diamond_leggings': `${WIKI_BASE}/Invicon_Diamond_Leggings.png`,
+  'diamond_boots': `${WIKI_BASE}/Invicon_Diamond_Boots.png`,
+  // Misc items
+  'bow': `${WIKI_BASE}/Invicon_Bow.png`,
+  'arrow': `${WIKI_BASE}/Invicon_Arrow.png`,
+  'bucket': `${WIKI_BASE}/Invicon_Bucket.png`,
+  'compass': `${WIKI_BASE}/Invicon_Compass.png`,
+  'clock': `${WIKI_BASE}/Invicon_Clock.png`,
+  'bed': `${WIKI_BASE}/Invicon_Red_Bed.png`,
+  'boat': `${WIKI_BASE}/Invicon_Oak_Boat.png`,
+  'minecart': `${WIKI_BASE}/Invicon_Minecart.png`,
+  'rail': `${WIKI_BASE}/Invicon_Rail.png`,
+  'oak_door': `${WIKI_BASE}/Invicon_Oak_Door.png`,
+  'fence': `${WIKI_BASE}/Invicon_Oak_Fence.png`,
+  'book': `${WIKI_BASE}/Invicon_Book.png`,
 };
 
 
@@ -164,9 +203,6 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
       str += `</tr>\n`;
     }
     str += `</table>\n</td>\n`;
-
-    // Arrow with Minecraft style
-    str += `<td align="center" width="50" style="font-size:24px;color:#404040;">➡️</td>\n`;
 
     // Result slot (larger, golden border for craftable item)
     const resultSlotStyle = result

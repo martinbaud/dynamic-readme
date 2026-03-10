@@ -236,6 +236,218 @@ export const RECIPES: Recipe[] = [
     result: 'diamond_sword',
     count: 1
   },
+  // === ARMOR ===
+  // Iron Helmet
+  {
+    pattern: [
+      ['iron_ingot', 'iron_ingot', 'iron_ingot'],
+      ['iron_ingot', null, 'iron_ingot'],
+      [null, null, null]
+    ],
+    result: 'iron_helmet',
+    count: 1
+  },
+  // Iron Chestplate
+  {
+    pattern: [
+      ['iron_ingot', null, 'iron_ingot'],
+      ['iron_ingot', 'iron_ingot', 'iron_ingot'],
+      ['iron_ingot', 'iron_ingot', 'iron_ingot']
+    ],
+    result: 'iron_chestplate',
+    count: 1
+  },
+  // Iron Leggings
+  {
+    pattern: [
+      ['iron_ingot', 'iron_ingot', 'iron_ingot'],
+      ['iron_ingot', null, 'iron_ingot'],
+      ['iron_ingot', null, 'iron_ingot']
+    ],
+    result: 'iron_leggings',
+    count: 1
+  },
+  // Iron Boots
+  {
+    pattern: [
+      ['iron_ingot', null, 'iron_ingot'],
+      ['iron_ingot', null, 'iron_ingot'],
+      [null, null, null]
+    ],
+    result: 'iron_boots',
+    count: 1
+  },
+  // Diamond Helmet
+  {
+    pattern: [
+      ['diamond', 'diamond', 'diamond'],
+      ['diamond', null, 'diamond'],
+      [null, null, null]
+    ],
+    result: 'diamond_helmet',
+    count: 1
+  },
+  // Diamond Chestplate
+  {
+    pattern: [
+      ['diamond', null, 'diamond'],
+      ['diamond', 'diamond', 'diamond'],
+      ['diamond', 'diamond', 'diamond']
+    ],
+    result: 'diamond_chestplate',
+    count: 1
+  },
+  // Diamond Leggings
+  {
+    pattern: [
+      ['diamond', 'diamond', 'diamond'],
+      ['diamond', null, 'diamond'],
+      ['diamond', null, 'diamond']
+    ],
+    result: 'diamond_leggings',
+    count: 1
+  },
+  // Diamond Boots
+  {
+    pattern: [
+      ['diamond', null, 'diamond'],
+      ['diamond', null, 'diamond'],
+      [null, null, null]
+    ],
+    result: 'diamond_boots',
+    count: 1
+  },
+  // === MISC ===
+  // Bow
+  {
+    pattern: [
+      [null, 'stick', 'string'],
+      ['stick', null, 'string'],
+      [null, 'stick', 'string']
+    ],
+    result: 'bow',
+    count: 1
+  },
+  // Arrow
+  {
+    pattern: [
+      ['flint', null, null],
+      ['stick', null, null],
+      ['feather', null, null]
+    ],
+    result: 'arrow',
+    count: 4
+  },
+  // Bucket
+  {
+    pattern: [
+      ['iron_ingot', null, 'iron_ingot'],
+      [null, 'iron_ingot', null],
+      [null, null, null]
+    ],
+    result: 'bucket',
+    count: 1
+  },
+  // Compass
+  {
+    pattern: [
+      [null, 'iron_ingot', null],
+      ['iron_ingot', 'redstone', 'iron_ingot'],
+      [null, 'iron_ingot', null]
+    ],
+    result: 'compass',
+    count: 1
+  },
+  // Clock
+  {
+    pattern: [
+      [null, 'gold_ingot', null],
+      ['gold_ingot', 'redstone', 'gold_ingot'],
+      [null, 'gold_ingot', null]
+    ],
+    result: 'clock',
+    count: 1
+  },
+  // Bed
+  {
+    pattern: [
+      ['wool', 'wool', 'wool'],
+      ['oak_planks', 'oak_planks', 'oak_planks'],
+      [null, null, null]
+    ],
+    result: 'bed',
+    count: 1
+  },
+  // Boat
+  {
+    pattern: [
+      ['oak_planks', null, 'oak_planks'],
+      ['oak_planks', 'oak_planks', 'oak_planks'],
+      [null, null, null]
+    ],
+    result: 'boat',
+    count: 1
+  },
+  // Minecart
+  {
+    pattern: [
+      ['iron_ingot', null, 'iron_ingot'],
+      ['iron_ingot', 'iron_ingot', 'iron_ingot'],
+      [null, null, null]
+    ],
+    result: 'minecart',
+    count: 1
+  },
+  // Rails
+  {
+    pattern: [
+      ['iron_ingot', null, 'iron_ingot'],
+      ['iron_ingot', 'stick', 'iron_ingot'],
+      ['iron_ingot', null, 'iron_ingot']
+    ],
+    result: 'rail',
+    count: 16
+  },
+  // Door
+  {
+    pattern: [
+      ['oak_planks', 'oak_planks', null],
+      ['oak_planks', 'oak_planks', null],
+      ['oak_planks', 'oak_planks', null]
+    ],
+    result: 'oak_door',
+    count: 3
+  },
+  // Fence
+  {
+    pattern: [
+      ['oak_planks', 'stick', 'oak_planks'],
+      ['oak_planks', 'stick', 'oak_planks'],
+      [null, null, null]
+    ],
+    result: 'fence',
+    count: 3
+  },
+  // Book
+  {
+    pattern: [
+      ['paper', null, null],
+      ['paper', null, null],
+      ['leather', null, null]
+    ],
+    result: 'book',
+    count: 1
+  },
+  // Paper
+  {
+    pattern: [
+      ['sugar_cane', 'sugar_cane', 'sugar_cane'],
+      [null, null, null],
+      [null, null, null]
+    ],
+    result: 'paper',
+    count: 3
+  },
 ];
 
 /**
