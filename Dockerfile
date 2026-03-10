@@ -1,4 +1,5 @@
 FROM node:22-slim
+# Cache bust: v2 - Minecraft Wiki sprites
 WORKDIR /usr/src/app
 
 # Install system dependencies for @napi-rs/canvas + git for gitlab deps
