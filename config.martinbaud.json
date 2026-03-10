@@ -55,7 +55,22 @@
     },
     "perso": {
       "homepage": "https://github.com/martinbaud",
-      "username": "martinbaud"
+      "username": "martinbaud",
+      "firstname": "Martin",
+      "lastname": "Baud",
+      "description": [],
+      "facts": {
+        "content": []
+      },
+      "socials": [],
+      "skills": {}
     }
+  },
+  "skills": {
+    "learning": [],
+    "front": [],
+    "back": [],
+    "notions": [],
+    "tools": []
   }
 }
