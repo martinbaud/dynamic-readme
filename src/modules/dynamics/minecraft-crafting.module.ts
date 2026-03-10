@@ -181,7 +181,7 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
     str += `</table>\n`;
     str += `</div>\n\n`;
 
-    // Compact inventory - horizontal with inline slot numbers
+    // Inventory with slot selector grid
     if (this.options?.showInventory !== false) {
       // Count items by type
       const itemCounts = new Map<string, number>();
@@ -192,28 +192,58 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
       // Find empty slots
       const emptySlots = grid.map((s, i) => s === null ? i : -1).filter(i => i !== -1);
 
-      str += `<p align="center">`;
+      str += `<div align="center">\n`;
+      str += `<table cellpadding="2" cellspacing="0">\n`;
+      str += `<tr>\n`;
+
+      // Left: Inventory items (vertical list)
+      str += `<td valign="top">\n`;
+      str += `<table cellpadding="2" cellspacing="1" style="background:${MC_BG};border:2px solid ${MC_SLOT_DARK};">\n`;
 
       if (itemCounts.size === 0) {
-        str += `<i>Inventory empty</i>`;
+        str += `<tr><td style="color:#606060;padding:4px;"><i>empty</i></td></tr>`;
       } else {
-        const items = Array.from(itemCounts.entries());
-        str += items.map(([item, count]) => {
-          // Item with count + slot links
-          let itemStr = `${this.getItemImg(item, 20)}<sub>x${count}</sub> `;
+        for (const [item, count] of itemCounts) {
+          const slotStyle = `background:${MC_SLOT};border:1px solid ${MC_SLOT_DARK};`;
+          str += `<tr>`;
+          str += `<td style="${slotStyle}" align="center" width="28" height="28">${this.getItemImg(item, 20)}</td>`;
+          str += `<td style="color:#404040;font-size:10px;padding:0 4px;"><b>x${count}</b></td>`;
 
-          // Only show available slots as small links
-          if (emptySlots.length > 0) {
-            const slots = emptySlots.map(s =>
-              `<a href="${BASE_URL}/place?slot=${s}&item=${item}">${s + 1}</a>`
-            ).join('');
-            itemStr += `<sub>[${slots}]</sub>`;
+          // Slot buttons 1-9
+          for (let s = 0; s < 9; s++) {
+            const isEmpty = emptySlots.includes(s);
+            if (isEmpty) {
+              str += `<td><a href="${BASE_URL}/place?slot=${s}&item=${item}" style="display:inline-block;width:16px;height:16px;background:#4a4;color:#fff;text-align:center;font-size:10px;line-height:16px;text-decoration:none;border-radius:2px;"><b>${s + 1}</b></a></td>`;
+            } else {
+              str += `<td><span style="display:inline-block;width:16px;height:16px;background:#666;color:#999;text-align:center;font-size:10px;line-height:16px;border-radius:2px;">${s + 1}</span></td>`;
+            }
           }
-          return itemStr;
-        }).join(' · ');
+          str += `</tr>\n`;
+        }
       }
+      str += `</table>\n`;
+      str += `</td>\n`;
 
-      str += `</p>\n`;
+      // Right: Slot reference (3x3 numbered grid)
+      str += `<td valign="top" style="padding-left:8px;">\n`;
+      str += `<table cellpadding="0" cellspacing="2">\n`;
+      for (let row = 0; row < 3; row++) {
+        str += `<tr>`;
+        for (let col = 0; col < 3; col++) {
+          const slot = row * 3 + col;
+          const isEmpty = emptySlots.includes(slot);
+          const bg = isEmpty ? '#4a4' : '#666';
+          const color = isEmpty ? '#fff' : '#999';
+          str += `<td align="center" width="20" height="20" style="background:${bg};color:${color};font-size:11px;font-weight:bold;border-radius:2px;">${slot + 1}</td>`;
+        }
+        str += `</tr>\n`;
+      }
+      str += `</table>\n`;
+      str += `</td>\n`;
+
+      str += `</tr>\n`;
+      str += `</table>\n`;
+      str += `</div>\n\n`;
     }
 
     // Controls with Minecraft button style
