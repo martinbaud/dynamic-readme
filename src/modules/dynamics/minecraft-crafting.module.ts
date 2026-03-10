@@ -116,7 +116,8 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
       const label = item.replace(/_/g, ' ').substring(0, 3);
       return `<code title="${item}">${label}</code>`;
     }
-    return `<img src="${sprite}" width="${size}" height="${size}" alt="${item}" title="${item.replace(/_/g, ' ')}">`;
+    // Use multiple approaches for sizing (GitHub may strip some)
+    return `<img src="${sprite}" width="${size}" height="${size}" style="width:${size}px;height:${size}px;image-rendering:pixelated;" alt="${item}" title="${item.replace(/_/g, ' ')}">`;
   }
 
   public async render(): Promise<string> {
@@ -199,7 +200,7 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
       // Helper to render an item row
       const renderItemRow = (item: string, count: number) => {
         let row = `<tr>`;
-        row += `<td align="center" width="32" height="32" bgcolor="${MC_SLOT}">${this.getItemImg(item, 24)}</td>`;
+        row += `<td align="center" width="40" height="40" bgcolor="${MC_SLOT}">${this.getItemImg(item, 32)}</td>`;
         row += `<td align="center" width="32"><b>x${count}</b></td>`;
 
         // Slot buttons 1-9
