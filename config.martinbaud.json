@@ -3,7 +3,7 @@
     {
       "id": "static/raw",
       "data": {
-        "content": "<h1 align=\"center\">martinbaud</h1>\n\n<p align=\"center\">\n  <b>Software craftsman · Retro game archaeologist</b>\n</p>\n\n<br>"
+        "content": "<h1 align=\"center\">martinbaud</h1>\n\n<p align=\"center\">\n  <b>Software craftsman · Retro game archaeologist</b><br>\n  <a href=\"https://martinbaud.github.io\">martinbaud.github.io</a> · <a href=\"https://aeryflux.com\">aeryflux.com</a>\n</p>\n\n"
       }
     },
     {
@@ -13,31 +13,32 @@
       },
       "options": {
         "showInventory": true,
-        "maxInventoryDisplay": 8
+        "maxInventoryDisplay": 8,
+        "headerIcon": "https://raw.githubusercontent.com/martinbaud/martinbaud/main/assets/crafting_table.png"
       }
     },
     {
       "id": "static/raw",
       "data": {
-        "content": "## Philosophy\n\n```\nDoc-First      README and types before code\nTest-First     Validate behavior, not implementation\nIterative      Small commits, one change at a time\nMinimalist     Only what's needed\nUpstream-First Contribute back, respect the source\n```\n\n---\n\n"
+        "content": "## Pro — AeryFlux\n\nBuilding [**AeryFlux**](https://github.com/aeryflux) — interactive globe experiences with NLP.\n\n| Project | Description | Status |\n|---------|-------------|--------|\n| [**geojsonto3D**](https://github.com/martinbaud/geojsonto3D) | GeoJSON → 3D globe models | 🟢 Production |\n| [lumos](https://github.com/aeryflux/lumos) | Landing page | 🟡 Alpha |\n| [globe](https://github.com/aeryflux/globe) | npm: @aeryflux/globe | 🟡 Alpha |\n| [xenova-bridge](https://github.com/aeryflux/xenova-bridge) | npm: @aeryflux/xenova-bridge | 🟡 Alpha |\n| [haki](https://github.com/aeryflux/haki) | Learn-to-code platform | 🟡 Alpha |\n\n<sub>TypeScript · Three.js · Hono · Transformers.js</sub>\n\n---\n\n"
       }
     },
     {
       "id": "static/raw",
       "data": {
-        "content": "## Pro — Open Core\n\nBuilding [**AeryFlux**](https://github.com/aeryflux) — interactive globe experiences with NLP.\n\n| Project | Stack |\n|---------|-------|\n| [**geojsonto3D**](https://github.com/martinbaud/geojsonto3D) | Three.js |\n| [lumos](https://github.com/aeryflux/lumos) | React |\n| [haki](https://github.com/aeryflux/haki) | Vite |\n| [xenova-bridge](https://github.com/aeryflux/xenova-bridge) | Transformers.js |\n\n<sub>TypeScript · Three.js · Hono · Claude Code</sub>\n\n---\n\n"
+        "content": "## Hobby — Game Servers & Modding\n\n### Active\n\n| Project | Inspiration | Status |\n|---------|-------------|--------|\n| [aof6_server](https://github.com/martinbaud/aof6_server) | [TeamAOF/All-of-Fabric-6](https://github.com/TeamAOF/All-of-Fabric-6) | 🟢 Railway |\n| [palworld-server-docker](https://github.com/martinbaud/palworld-server-docker) | [thijsvanloef](https://github.com/thijsvanloef/palworld-server-docker) | 🟡 [UDP blocked](https://github.com/martinbaud/palworld-server-docker/issues/1) |\n| [EnhancedSC](https://github.com/martinbaud/EnhancedSC) | [Joshhhuaaa](https://github.com/Joshhhuaaa/EnhancedSC) | 🟡 2P Coop PR |\n\n### Research\n\n| Project | Inspiration | Focus |\n|---------|-------------|-------|\n| UrbzMMO | [Sim2Team](https://sim2team.github.io/) | GBA reverse engineering |\n| City Builders | [Impressions Games](https://en.wikipedia.org/wiki/City_Building_(series)) | Isometric engines |\n\n<sub>UnrealScript · GBA ASM · Docker · Railway</sub>\n\n---\n\n"
       }
     },
     {
       "id": "static/raw",
       "data": {
-        "content": "## Hobby — Retro Archaeology\n\nReverse engineering & preserving classic games.\n\n### Active\n\n| Project | Upstream | Intent |\n|---------|----------|--------|\n| [aof6_server](https://github.com/martinbaud/aof6_server) | — | Minecraft modpack |\n| [EnhancedSC](https://github.com/martinbaud/EnhancedSC) | [Joshhhuaaa](https://github.com/Joshhhuaaa/EnhancedSC) | 2-player coop |\n| UrbzMMO | — | GBA engine |\n\n### Research — Impressions Games\n\nThe [City Building Series](https://en.wikipedia.org/wiki/City_Building_(series)) by Impressions Games → Sierra → BreakAway:\n\n| Game | Year | Setting |\n|------|------|---------|\n| Caesar III | 1998 | Rome |\n| Pharaoh | 1999 | Egypt |\n| Zeus | 2000 | Greece |\n| Emperor | 2002 | China |\n\n<sub>UnrealScript · GBA ASM · Isometric engines</sub>\n\n---\n\n"
+        "content": "## Activity\n\n<p align=\"center\">\n  <img src=\"https://github-readme-streak-stats.herokuapp.com/?user=martinbaud&theme=tokyonight&hide_border=true&background=1a1a2e&ring=00ff88&fire=ffd700&currStreakLabel=00ff88\" alt=\"GitHub Streak\" height=\"165\">\n</p>\n\n---\n\n"
       }
     },
     {
       "id": "static/raw",
       "data": {
-        "content": "## Tools\n\n| Fork | Upstream | Intent |\n|------|----------|--------|\n| [dynamic-readme](https://github.com/martinbaud/dynamic-readme) | [Charles-Chrismann](https://github.com/Charles-Chrismann/dynamic-readme) | Minecraft crafting |\n\n---\n\n<p align=\"center\"><sub>Minimalist · Iterative · Upstream-first</sub></p>\n"
+        "content": "## Tools\n\n| Fork | Upstream | Purpose |\n|------|----------|--------|\n| [dynamic-readme](https://github.com/martinbaud/dynamic-readme) | [Charles-Chrismann](https://github.com/Charles-Chrismann/dynamic-readme) | ⬆️ Crafting table |\n\n---\n\n<p align=\"center\">\n  <a href=\"https://martinbaud.github.io\"><img src=\"https://img.shields.io/badge/Portfolio-martinbaud.github.io-00ff88?style=flat-square\" alt=\"Portfolio\"></a>\n  <a href=\"https://www.npmjs.com/org/aeryflux\"><img src=\"https://img.shields.io/badge/npm-@aeryflux-cb3837?style=flat-square&logo=npm\" alt=\"npm\"></a>\n</p>\n\n<p align=\"center\"><sub>Doc-first · Test-first · Upstream-first</sub></p>\n"
       }
     }
   ],
@@ -50,7 +51,7 @@
         "path": "README.md"
       },
       "commit": {
-        "message": ":hammer: Update crafting table"
+        "message": ":sparkles: Craft item"
       }
     },
     "perso": {
