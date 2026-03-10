@@ -26,9 +26,18 @@ export class Crafting {
   resultCount: number;
   history: CraftEvent[];
 
+  static DEFAULT_INVENTORY = [
+    'oak_log', 'oak_log', 'oak_log', 'oak_log',
+    'cobblestone', 'cobblestone', 'cobblestone', 'cobblestone',
+    'cobblestone', 'cobblestone', 'cobblestone', 'cobblestone',
+    'coal', 'coal', 'coal', 'coal',
+    'iron_ingot', 'iron_ingot', 'iron_ingot',
+    'diamond', 'diamond', 'diamond',
+  ];
+
   constructor(data?: Partial<CraftingState>) {
     this.grid = data?.grid ?? Array(9).fill(null);
-    this.inventory = data?.inventory ?? ['oak_log', 'oak_log', 'oak_log', 'oak_log'];
+    this.inventory = data?.inventory ?? [...Crafting.DEFAULT_INVENTORY];
     this.result = data?.result ?? null;
     this.resultCount = data?.resultCount ?? 0;
     this.history = data?.history ?? [];
@@ -154,7 +163,7 @@ export class Crafting {
    */
   reset(): void {
     this.grid = Array(9).fill(null);
-    this.inventory = ['oak_log', 'oak_log', 'oak_log', 'oak_log'];
+    this.inventory = [...Crafting.DEFAULT_INVENTORY];
     this.result = null;
     this.resultCount = 0;
     this.history = [];
