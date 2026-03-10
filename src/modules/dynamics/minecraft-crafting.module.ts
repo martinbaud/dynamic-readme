@@ -192,49 +192,70 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
       // Find empty slots
       const emptySlots = grid.map((s, i) => s === null ? i : -1).filter(i => i !== -1);
 
+      // Helper to render an item row
+      const renderItemRow = (item: string, count: number) => {
+        let row = `<tr>`;
+        row += `<td align="center" width="32" height="32" bgcolor="${MC_SLOT}">${this.getItemImg(item, 24)}</td>`;
+        row += `<td align="center" width="32"><b>x${count}</b></td>`;
+
+        // Slot buttons 1-9
+        for (let s = 0; s < 9; s++) {
+          const isEmpty = emptySlots.includes(s);
+          if (isEmpty) {
+            row += `<td align="center" width="18"><a href="${BASE_URL}/place?slot=${s}&item=${item}"><b>${s + 1}</b></a></td>`;
+          } else {
+            row += `<td align="center" width="18" style="color:#999;">${s + 1}</td>`;
+          }
+        }
+        row += `</tr>\n`;
+        return row;
+      };
+
+      const items = Array.from(itemCounts.entries());
+      const maxVisible = 4;
+
       str += `<div align="center">\n`;
-      str += `<table cellpadding="2" cellspacing="0">\n`;
+      str += `<table>\n`;
       str += `<tr>\n`;
 
-      // Left: Inventory items (vertical list)
+      // Left: Inventory items
       str += `<td valign="top">\n`;
-      str += `<table cellpadding="2" cellspacing="1" style="background:${MC_BG};border:2px solid ${MC_SLOT_DARK};">\n`;
+      str += `<table>\n`;
 
-      if (itemCounts.size === 0) {
-        str += `<tr><td style="color:#606060;padding:4px;"><i>empty</i></td></tr>`;
+      if (items.length === 0) {
+        str += `<tr><td><i>empty</i></td></tr>`;
       } else {
-        for (const [item, count] of itemCounts) {
-          const slotStyle = `background:${MC_SLOT};border:1px solid ${MC_SLOT_DARK};`;
-          str += `<tr>`;
-          str += `<td style="${slotStyle}" align="center" width="28" height="28">${this.getItemImg(item, 20)}</td>`;
-          str += `<td style="color:#404040;font-size:10px;padding:0 4px;"><b>x${count}</b></td>`;
+        // Show first items directly
+        for (let i = 0; i < Math.min(items.length, maxVisible); i++) {
+          str += renderItemRow(items[i][0], items[i][1]);
+        }
 
-          // Slot buttons 1-9
-          for (let s = 0; s < 9; s++) {
-            const isEmpty = emptySlots.includes(s);
-            if (isEmpty) {
-              str += `<td><a href="${BASE_URL}/place?slot=${s}&item=${item}" style="display:inline-block;width:16px;height:16px;background:#4a4;color:#fff;text-align:center;font-size:10px;line-height:16px;text-decoration:none;border-radius:2px;"><b>${s + 1}</b></a></td>`;
-            } else {
-              str += `<td><span style="display:inline-block;width:16px;height:16px;background:#666;color:#999;text-align:center;font-size:10px;line-height:16px;border-radius:2px;">${s + 1}</span></td>`;
-            }
+        // Remaining items in collapsible
+        if (items.length > maxVisible) {
+          str += `<tr><td colspan="11">\n`;
+          str += `<details><summary>+${items.length - maxVisible} more items</summary>\n`;
+          str += `<table>\n`;
+          for (let i = maxVisible; i < items.length; i++) {
+            str += renderItemRow(items[i][0], items[i][1]);
           }
-          str += `</tr>\n`;
+          str += `</table>\n`;
+          str += `</details>\n`;
+          str += `</td></tr>\n`;
         }
       }
       str += `</table>\n`;
       str += `</td>\n`;
 
       // Right: Slot reference (3x3 numbered grid)
-      str += `<td valign="top" style="padding-left:8px;">\n`;
-      str += `<table cellpadding="0" cellspacing="2">\n`;
+      str += `<td valign="top" width="60">\n`;
+      str += `<table cellpadding="4">\n`;
       for (let row = 0; row < 3; row++) {
         str += `<tr>`;
         for (let col = 0; col < 3; col++) {
           const slot = row * 3 + col;
           const isEmpty = emptySlots.includes(slot);
-          const bg = isEmpty ? '#4a4' : '#666';
-          const color = isEmpty ? '#fff' : '#999';
-          str += `<td align="center" width="20" height="20" style="background:${bg};color:${color};font-size:11px;font-weight:bold;border-radius:2px;">${slot + 1}</td>`;
+          const bg = isEmpty ? '#5a5' : '#555';
+          str += `<td align="center" bgcolor="${bg}"><b>${slot + 1}</b></td>`;
         }
         str += `</tr>\n`;
       }
