@@ -141,6 +141,17 @@ export const ConfigSchema = z.object({
         id: z.literal("dynamic/generated"),
         disabled: z.boolean().optional(),
       }),
+      z.object({
+        id: z.literal("dynamic/minecraft-crafting"),
+        data: z.object({
+          uuid: z.string(),
+        }),
+        options: z.object({
+          showInventory: z.boolean().optional(),
+          maxInventoryDisplay: z.number().optional(),
+        }).optional(),
+        disabled: z.boolean().optional(),
+      }),
 
     ]),
   ),

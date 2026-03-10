@@ -60,17 +60,11 @@
       "lastname": "Baud",
       "description": [],
       "facts": {
+        "title": "About me",
         "content": []
       },
-      "socials": [],
-      "skills": {}
-    }
-  },
-  "skills": {
-    "learning": [],
-    "front": [],
-    "back": [],
-    "notions": [],
-    "tools": []
+      "socials": []
+    },
+    "skills": {}
   }
 }

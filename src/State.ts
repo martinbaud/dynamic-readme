@@ -18,6 +18,7 @@ import {
 } from './modules';
 import { MinesweeperDynamicModule } from './modules/dynamics/minesweeper.module';
 import { ChessDynamicModule } from './modules/dynamics/chess.module';
+import { MinecraftCraftingDynamicModule } from './modules/dynamics/minecraft-crafting.module';
 import { AppConfigService } from './services';
 
 type ModuleConstructor<TData = any, TOptions = any> = new (data: TData, options?: TOptions) => AbstractModule<TData, TOptions>;
@@ -46,6 +47,7 @@ class State {
       ["dynamic/wordle", WordleDynamicModule],
       ["dynamic/minesweeper", MinesweeperDynamicModule],
       ["dynamic/chess", ChessDynamicModule],
+      ["dynamic/minecraft-crafting", MinecraftCraftingDynamicModule],
     ])
 
     const moduleInitPromises = []
