@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 # Install dependencies
 COPY package*.json ./
-RUN npm ci --silent
+RUN npm install
 
 # Copy source and build
 COPY . .
