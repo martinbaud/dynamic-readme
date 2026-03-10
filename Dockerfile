@@ -1,8 +1,9 @@
 FROM node:22-slim
 WORKDIR /usr/src/app
 
-# Install system dependencies for @napi-rs/canvas
+# Install system dependencies for @napi-rs/canvas + git for gitlab deps
 RUN apt-get update && apt-get install -y \
+    git \
     libcairo2-dev \
     libpango1.0-dev \
     libjpeg-dev \
