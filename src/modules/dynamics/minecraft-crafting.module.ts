@@ -9,6 +9,7 @@ interface Data {
 interface Options {
   showInventory?: boolean;
   maxInventoryDisplay?: number;
+  headerIcon?: string;
 }
 
 // Minecraft Wiki sprite URLs (32x32 PNG)
@@ -176,7 +177,10 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
 
     // Main crafting UI container with Minecraft inventory style
     str += `<table cellpadding="8" cellspacing="0" style="background:${MC_BG};border:3px solid ${MC_SLOT_DARK};border-radius:4px;">\n`;
-    str += `<tr><td colspan="5" align="center" style="color:#404040;font-weight:bold;font-family:monospace;">⛏️ CRAFTING TABLE</td></tr>\n`;
+    const headerIcon = this.options?.headerIcon
+      ? `<img src="${this.options.headerIcon}" width="32" height="32" style="image-rendering:pixelated;">`
+      : '⛏️ CRAFTING TABLE';
+    str += `<tr><td colspan="5" align="center">${headerIcon}</td></tr>\n`;
     str += `<tr>\n`;
 
     // Crafting grid (3x3) with Minecraft slot styling
