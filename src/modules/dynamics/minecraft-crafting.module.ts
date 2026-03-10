@@ -315,7 +315,7 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
     str += `<a href="${BASE_URL}/reset" style="color:#404040;">🔄 Reset</a>`;
     str += `</p>\n`;
 
-    str += `<hr>\n\n`;
+    str += `\n---\n\n`;
 
     return str;
   }
