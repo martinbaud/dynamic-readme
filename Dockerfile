@@ -24,7 +24,7 @@ RUN npm run build
 RUN cp -r public dist/
 
 # Copy config (use martinbaud config as default)
-RUN cp config.martinbaud.json config.json
+RUN cp config.martinbaud.json config.json && cp config.json dist/config.json
 
 # Expose port
 EXPOSE 80
