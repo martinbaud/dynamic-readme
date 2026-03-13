@@ -175,6 +175,9 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
 
     let str = `<div align="center">\n`;
 
+    // Development notice
+    str += `<sub>⚠️ Feature under development — <a href="https://github.com/martinbaud/dynamic-readme/issues/3">see known issues</a></sub>\n\n`;
+
     // Main crafting UI container with Minecraft inventory style
     str += `<table cellpadding="8" cellspacing="0" style="background:${MC_BG};border:3px solid ${MC_SLOT_DARK};border-radius:4px;">\n`;
     const headerIcon = this.options?.headerIcon
