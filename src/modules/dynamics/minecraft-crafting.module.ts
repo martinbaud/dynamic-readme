@@ -174,9 +174,7 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
     const MC_SLOT_LIGHT = '#ffffff';
 
     let str = `<div align="center">\n`;
-
-    // Development notice
-    str += `<sub>⚠️ Feature under development — <a href="https://github.com/martinbaud/dynamic-readme/issues/3">see known issues</a></sub>\n\n`;
+    str += `<sub><a href="https://github.com/martinbaud/dynamic-readme">Crafting Table</a> — interactive Minecraft profile widget</sub>\n\n`;
 
     // Main crafting UI container with Minecraft inventory style
     str += `<table cellpadding="8" cellspacing="0" style="background:${MC_BG};border:3px solid ${MC_SLOT_DARK};border-radius:4px;">\n`;
