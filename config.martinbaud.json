@@ -9,13 +9,19 @@
     {
       "id": "static/raw",
       "data": {
-        "content": "### Open Source\n\n| Package | Description |\n|---------|-------------|\n| [@aeryflux/globe](https://www.npmjs.com/package/@aeryflux/globe) | 3D globe for React & React Native · [demo](https://aeryflux.github.io/globe-demo) |\n| [@aeryflux/xenova-bridge](https://www.npmjs.com/package/@aeryflux/xenova-bridge) | Natural language intent detection (on-device) |\n| [Lumos](https://github.com/aeryflux/lumos) | Landing page · [aeryflux.com](https://aeryflux.com) |\n| [Haki](https://github.com/aeryflux/haki) | Learn to code with visual compilation |\n\n<sub>TypeScript · Three.js · React Native · Expo · Transformers.js</sub>\n\n---\n\n"
+        "content": "### Open Source\n\n| Package | Description |\n|---------|-------------|\n| [@aeryflux/globe](https://www.npmjs.com/package/@aeryflux/globe) | 3D globe for React & React Native · [demo](https://aeryflux.github.io/globe-demo) |\n| [@aeryflux/xenova-bridge](https://www.npmjs.com/package/@aeryflux/xenova-bridge) | Natural language intent detection (on-device) |\n| [geojsonto3D](https://github.com/martinbaud/geojsonto3D) | GeoJSON to 3D globe models |\n| [Lumos](https://github.com/aeryflux/lumos) | Landing page · [aeryflux.com](https://aeryflux.com) |\n| [Haki](https://github.com/aeryflux/haki) | Learn to code with visual compilation |\n\n<sub>TypeScript · Python · Three.js · React Native · Expo · Transformers.js</sub>\n\n---\n\n"
       }
     },
     {
       "id": "static/raw",
       "data": {
-        "content": "### Side Projects\n\n[voicemode](https://github.com/martinbaud/voicemode) · [geojsonto3D](https://github.com/martinbaud/geojsonto3D) · [powershell-profile](https://github.com/martinbaud/powershell-profile) · [AerySandBox](https://github.com/martinbaud/aof6_server)\n\n---\n\n"
+        "content": "### Tools\n\n| Project | Purpose |\n|---------|--------|\n| [voicemode](https://github.com/martinbaud/voicemode) | Voice conversations for Claude Code |\n| [powershell-profile](https://github.com/martinbaud/powershell-profile) | Linux-like aliases for Windows |\n| [dynamic-readme](https://github.com/martinbaud/dynamic-readme) | Interactive GitHub profile widgets |\n| Ghidra | Reverse engineering |\n| Elegoo Neptune 4 | 3D printing |\n\n---\n\n"
+      }
+    },
+    {
+      "id": "static/raw",
+      "data": {
+        "content": "### AerySandBox\n\n| Project | Description |\n|---------|-------------|\n| [aerysandbox-discord-bot](https://github.com/martinbaud/aerysandbox-discord-bot) | Server/cost management · player visualization |\n| [palworld-server-docker](https://github.com/martinbaud/palworld-server-docker) | Palworld dedicated server (fork) |\n| [aof6_server](https://github.com/martinbaud/aof6_server) | Minecraft All of Fabric 6 |\n| [EnhancedSC](https://github.com/martinbaud/EnhancedSC) | Splinter Cell multi-intent (fork) |\n\n---\n\n"
       }
     },
     {

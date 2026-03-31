@@ -292,7 +292,7 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
       str += `</table>\n`;
       str += `</td>\n`;
 
-      // Right: Slot reference (3x3 numbered grid)
+      // Right: Slot reference (3x3 numbered grid) + controls
       str += `<td valign="top" width="60">\n`;
       str += `<table cellpadding="4">\n`;
       for (let row = 0; row < 3; row++) {
@@ -305,6 +305,11 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
         }
         str += `</tr>\n`;
       }
+      str += `<tr><td colspan="3" align="center" style="font-size:10px;">`;
+      str += `<a href="${BASE_URL}/clear" style="color:#404040;">Clear</a>`;
+      str += ` · `;
+      str += `<a href="${BASE_URL}/reset" style="color:#404040;">Reset</a>`;
+      str += `</td></tr>\n`;
       str += `</table>\n`;
       str += `</td>\n`;
 
@@ -312,15 +317,6 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
       str += `</table>\n`;
       str += `</div>\n\n`;
     }
-
-    // Controls with Minecraft button style
-    str += `<p align="center" style="margin-top:8px;">`;
-    str += `<a href="${BASE_URL}/clear" style="color:#404040;">🗑️ Clear</a>`;
-    str += ` · `;
-    str += `<a href="${BASE_URL}/reset" style="color:#404040;">🔄 Reset</a>`;
-    str += `</p>\n`;
-
-    str += `\n---\n\n`;
 
     return str;
   }
