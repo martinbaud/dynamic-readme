@@ -10,7 +10,6 @@ interface Options {
   showInventory?: boolean;
   maxInventoryDisplay?: number;
   headerIcon?: string;
-  inline?: boolean;
 }
 
 // Minecraft Wiki sprite URLs (32x32 PNG)
@@ -174,8 +173,7 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
     const MC_SLOT_DARK = '#373737';
     const MC_SLOT_LIGHT = '#ffffff';
 
-    const inline = this.options?.inline === true;
-    let str = inline ? '' : `<div align="center">\n`;
+    let str = `<div align="center">\n`;
     str += `<sub><a href="https://github.com/martinbaud/dynamic-readme">Crafting Table</a> — interactive Minecraft profile widget</sub>\n\n`;
 
     // Main crafting UI container with Minecraft inventory style
@@ -227,7 +225,7 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
 
     str += `</tr>\n`;
     str += `</table>\n`;
-    if (!inline) str += `</div>\n\n`;
+    str += `</div>\n\n`;
 
     // Inventory with slot selector grid
     if (this.options?.showInventory !== false) {
@@ -262,7 +260,7 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
       const items = Array.from(itemCounts.entries());
       const maxVisible = 4;
 
-      if (!inline) str += `<div align="center">\n`;
+      str += `<div align="center">\n`;
       str += `<table>\n`;
       str += `<tr>\n`;
 
@@ -317,7 +315,7 @@ export class MinecraftCraftingDynamicModule extends AbstractDynamicModule<Data, 
 
       str += `</tr>\n`;
       str += `</table>\n`;
-      if (!inline) str += `</div>\n\n`;
+      str += `</div>\n\n`;
     }
 
     return str;
